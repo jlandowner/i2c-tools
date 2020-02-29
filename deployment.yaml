@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: i2c-tools
+spec:
+  selector:
+    matchLabels:
+      deploy: i2c-tools
+  replicas: 1
+  template:
+    metadata:
+      name: i2c-tools
+      labels:
+        deploy: i2c-tools
+    spec:
+      containers:
+      - name: i2c-tools
+        image: jlandowner/i2c-tools:centos7
+        command: 
+          - tail
+        args:
+          - -f
+          - /dev/null
+        securityContext:
+          privileged: true
+      nodeSelector:
+        "kubernetes.io/hostname": "myraspi-zero2"
+      tolerations:
+      - key: "raspi"
+        value: "zero"
+        effect: "NoSchedule"
