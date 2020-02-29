@@ -23,9 +23,9 @@ spec:
           - /dev/null
         securityContext:
           privileged: true
-      nodeSelector:
-        "kubernetes.io/hostname": "myraspi-zero2"
-      tolerations:
-      - key: "raspi"
-        value: "zero"
-        effect: "NoSchedule"
+      # nodeSelector:
+      #   "kubernetes.io/hostname": "raspberrypi"
+      # tolerations:
+      # - key: "raspi"
+      #   value: "zero"
+      #   effect: "NoSchedule"
